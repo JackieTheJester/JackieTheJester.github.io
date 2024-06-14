@@ -112,6 +112,11 @@
             let group = document.getElementById("user_group").value;
             let email = document.getElementById("user_email").value;
 
+            let data = {
+                name: name,
+                grp: group,
+                email: email
+            }
             tg.sendData(JSON.stringify(name, group, email));
 
             tg.close();
