@@ -87,15 +87,41 @@
         <h1>Регистрация</h1>
         <img src="gerbtspu118.png">
         <p>Регистрация нужна для отслеживания количества студентов которые пользуются ботом.</p>
-        <button id="regist">Зарегистрироваться</button>
+        <button id="reg">Зарегистрироваться</button>
     </div>
     <form id="form">
         <input type="text" placeholder="ФИО" id="user_name">
         <input type="text" placeholder="Группа" id="user_group">
         <input type="text" placeholder="Email" id="user_email">
-        <button id="order">Зарегистрироваться</button>
+        <button id="regist">Зарегистрироваться</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let reg = document.getElementById("reg");
+        let regist = document.getElementById("regist");
+        tg.expand();
 
+        reg.addEventListener("click", () => {
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+        });
+
+        regist.addEventListener("click", () => {
+            let name = document.getElementById("user_name").value;
+            let group = document.getElementById("user_group").value;
+            let email = document.getElementById("user_email").value;
+
+            let data = {
+                name: name,
+                group: group,
+                email: email
+            }
+            tg.sendData(JSON.stringify(data));
+
+            tg.close();
+        })
+
+    </script>
 </body>
 </html>
