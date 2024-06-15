@@ -112,9 +112,11 @@
             let group = document.getElementById("user_group").value;
             let email = document.getElementById("user_email").value;
 
-            tg.sendData(stringify(name));
-            tg.sendData(stringify(group));
-            tg.sendData(stringify(email));
+            let data = {
+                name: name,
+                grp: group,
+                email: email
+            }
 
             tg.close();
         });
